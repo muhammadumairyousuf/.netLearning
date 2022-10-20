@@ -1,0 +1,15 @@
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\bin\Debug\net6.0\MultiThreading.Task1.100Tasks.exe
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\bin\Debug\net6.0\MultiThreading.Task1.100Tasks.deps.json
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\bin\Debug\net6.0\MultiThreading.Task1.100Tasks.runtimeconfig.json
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\bin\Debug\net6.0\MultiThreading.Task1.100Tasks.dll
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\bin\Debug\net6.0\MultiThreading.Task1.100Tasks.pdb
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.csproj.AssemblyReference.cache
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.AssemblyInfoInputs.cache
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.AssemblyInfo.cs
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.csproj.CoreCompileInputs.cache
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.dll
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\refint\MultiThreading.Task1.100Tasks.dll
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.pdb
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\MultiThreading.Task1.100Tasks.genruntimeconfig.cache
+C:\Users\Muhammad_Yousuf\Downloads\01.multithreading.v.1.2\01.multithreading\MultiThreading.Task1.100Tasks\obj\Debug\net6.0\ref\MultiThreading.Task1.100Tasks.dll
