@@ -14,11 +14,11 @@ namespace MultiThreading.Task5.Threads.SharedCollection
 {
     class Program
     {
-        static EventWaitHandle first=new AutoResetEvent(false);
+        static EventWaitHandle first = new AutoResetEvent(false);
         static EventWaitHandle second = new AutoResetEvent(false);
         static List<int> collection = new List<int>();
 
-        
+
         static void Main(string[] args)
         {
             Console.WriteLine("5. Write a program which creates two threads and a shared collection:");
@@ -26,13 +26,24 @@ namespace MultiThreading.Task5.Threads.SharedCollection
             Console.WriteLine("Use Thread, ThreadPool or Task classes for thread creation and any kind of synchronization constructions.");
             Console.WriteLine();
 
+            Task task1 =  Task.Run(() => { 
+            
+            });
+            Task task2 = Task.Run(() => {
+
+            });
+
+ //           Task task2 = Task.Factory.StartNew(printElements);
             // feel free to add your code
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
-                Task.Factory.StartNew(()=>addElements(i));
+                task1.ContinueWith((t1) => { addElements(i); });
                 first.WaitOne();
-                Task.Factory.StartNew(printElements);
+                task2.ContinueWith((t1) => { printElements(); });
+
+
                 second.WaitOne();
+
             }
 
             Console.ReadLine();
@@ -49,15 +60,14 @@ namespace MultiThreading.Task5.Threads.SharedCollection
         }
 
 
-        
+
 
         public static void addElements(int i)
         {
-              collection.Add(i);
+            collection.Add(i);
             Console.WriteLine("added:" + i);
-              first.Set();
-}
+            first.Set();
 
         }
-    
+    }
 }
