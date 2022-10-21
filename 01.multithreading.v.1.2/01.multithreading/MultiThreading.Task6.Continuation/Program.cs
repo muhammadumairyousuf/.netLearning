@@ -45,11 +45,15 @@ namespace MultiThreading.Task6.Continuation
             {
                 if (ct.IsCancellationRequested)
                 {
-                    ct.ThrowIfCancellationRequested();
-                }
-                Console.WriteLine("Parent Task is cancelled during the operation");
+                    Console.WriteLine("Parent Task is cancelled during the operation");
 
-            }, tokenSource2.Token);
+                }
+                else
+                {
+                    Console.WriteLine("Next task running with impact of parent result");
+                }
+
+            }, TaskContinuationOptions.OnlyOnCanceled | TaskContinuationOptions.LongRunning);
             task.ContinueWith((t1) =>
             {
                 if (task.IsCompletedSuccessfully)
@@ -58,12 +62,7 @@ namespace MultiThreading.Task6.Continuation
                 }
 
             }, TaskContinuationOptions.OnlyOnRanToCompletion);
-            task.ContinueWith((t1) =>
-            {
-                Console.WriteLine("Next task running with impact of parent result");
-
-            });
-
+            
             Console.ReadLine();
           
         }
