@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MultiThreading.Task4.Threads.Join
 {
@@ -36,29 +37,22 @@ namespace MultiThreading.Task4.Threads.Join
             int numThreads = 10;
           //  WaitCallback waitCallback = new WaitCallback(EnterSempahore);
            // ThreadPool.QueueUserWorkItem(waitCallback, numThreads);
-            
-            
-            while(numThreads >1)
-            {
-                Thread thread = new Thread(() => {
-                  
-                    Console.WriteLine("New Thread" + numThreads);
-                    numThreads--;
-
-                });
-                thread.Start();
-                thread.Join();
-            }
+            Task task = Task.Factory.StartNew(()=>printThread(numThreads));
            
             Console.ReadLine();
         }
 
-        //private static int printThread(int numThreads)
-        //{
-        //    numThreads=numThreads-1;
-        //   Console.WriteLine("New Thread" + numThreads);
-        //    return numThreads;
-        //}
+        private static void printThread(int numThreads)
+        {
+            if (numThreads > 0)
+            {
+                Console.WriteLine("New Thread" + numThreads);
+                
+                Thread t= new Thread(()=>printThread(numThreads - 1));
+                t.Start();
+                t.Join();
+            }
+        }
 
         //private static void EnterSempahore(object i)
         //{
@@ -70,11 +64,11 @@ namespace MultiThreading.Task4.Threads.Join
         //        t1.Join();
         //        x--;
         //    }
-          
+
         //    semaphoreSlim.Wait();
         //}
 
-       
+
         //private static void threadProc(object state)
         //{
         //    Console.WriteLine("New Thread" + state.ToString());

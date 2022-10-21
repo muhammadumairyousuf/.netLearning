@@ -8,13 +8,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MultiThreading.Task5.Threads.SharedCollection
 {
     class Program
     {
-        static AutoResetEvent autoResetEvent=new AutoResetEvent(false);
+        static EventWaitHandle first=new AutoResetEvent(false);
+        static EventWaitHandle second = new AutoResetEvent(false);
         static List<int> collection = new List<int>();
+
         
         static void Main(string[] args)
         {
@@ -24,34 +27,37 @@ namespace MultiThreading.Task5.Threads.SharedCollection
             Console.WriteLine();
 
             // feel free to add your code
+            for(int i=0;i<10;i++)
+            {
+                Task.Factory.StartNew(()=>addElements(i));
+                first.WaitOne();
+                Task.Factory.StartNew(printElements);
+                second.WaitOne();
+            }
 
-            Thread thread1 = new Thread(addElements);
-            thread1.Start();
-            autoResetEvent.WaitOne();
-            Thread thread2 = new Thread(printElements);
-            thread2.Start();
             Console.ReadLine();
         }
 
-        public static void printElements(object obj)
+        public static void printElements()
         {
-            for (int i = 0; i < collection.Count; i++)
+            for (int j = 0; j < collection.Count; j++)
             {
-             
-                Console.WriteLine(collection[i]);
+                Console.WriteLine(collection[j]);
 
             }
-
-
+            second.Set();
         }
 
-        public static void addElements(object obj)
+
+        
+
+        public static void addElements(int i)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                collection.Add(i);
-            }
-           autoResetEvent.Set();
+              collection.Add(i);
+            Console.WriteLine("added:" + i);
+              first.Set();
+}
+
         }
-    }
+    
 }

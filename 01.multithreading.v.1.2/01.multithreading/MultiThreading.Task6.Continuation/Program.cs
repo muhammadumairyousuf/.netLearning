@@ -7,6 +7,7 @@
    Demonstrate the work of the each case with console utility.
 */
 using System;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,28 +29,40 @@ namespace MultiThreading.Task6.Continuation
             Console.WriteLine("Demonstrate the work of the each case with console utility.");
             Console.WriteLine();
 
-            // feel free to add your code
+            var tokenSource2 = new CancellationTokenSource();
+            CancellationToken ct = tokenSource2.Token;
             Task task = Task.Factory.StartNew(parentTask, token);
- 
+          
 
+            task.ContinueWith((t1) =>
+            {
+                
+                Console.WriteLine("Parent Task not Complete and any fault during operation");
+                
+       
+            },TaskContinuationOptions.OnlyOnFaulted);
+            task.ContinueWith((t1) =>
+            {
+                if (ct.IsCancellationRequested)
+                {
+                    ct.ThrowIfCancellationRequested();
+                }
+                Console.WriteLine("Parent Task is cancelled during the operation");
+
+            }, tokenSource2.Token);
             task.ContinueWith((t1) =>
             {
                 if (task.IsCompletedSuccessfully)
                 {
                     Console.WriteLine("Parent Task sucessfully Completed");
                 }
-                else if (task.IsFaulted)
-                {
-                    Console.WriteLine("Parent Task not Complete and any fault during operation");
-                }
+
+            }, TaskContinuationOptions.OnlyOnRanToCompletion);
+            task.ContinueWith((t1) =>
+            {
                 Console.WriteLine("Next task running with impact of parent result");
 
             });
-            if (token.IsCancellationRequested)
-            {
-                Console.WriteLine("Parent Task is cancelled during the operation");
-
-            }
 
             Console.ReadLine();
           
@@ -57,10 +70,6 @@ namespace MultiThreading.Task6.Continuation
 
         static void parentTask()
         {
-            tokenSource.Cancel();
-          
-            //  throw new Exception();
-            //tokenSource2.Cancel();
 
             Console.WriteLine("Parent Task Initialize");
         }

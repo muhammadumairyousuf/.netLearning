@@ -15,7 +15,7 @@ namespace MultiThreading.Task1._100Tasks
     {
         const int TaskAmount = 100;
         const int MaxIterationsCount = 1000;
-
+        static object resultStateObj = new object();
         static void Main(string[] args)
         {
             Console.WriteLine(".Net Mentoring Program. Multi threading V1.");
@@ -32,22 +32,26 @@ namespace MultiThreading.Task1._100Tasks
         static void HundredTasks()
         {
             List<Task> tasks = new List<Task>();
+           
             for (int i= 0; i < TaskAmount; i++)
-{
-                Task task = Task.Factory.StartNew(() => PrintNumbers(i));
+            {
+              //  int k = i;
+              
+                Task task = Task.Factory.StartNew(PrintNumbers,i);
                
             }
             Task.WaitAll(tasks.ToArray());
             Console.ReadLine();
             
         }
-        static void PrintNumbers(int task)
-        {
-           
-            for (int i = 0; i < MaxIterationsCount; i++)
+        static void PrintNumbers(object state)
+        {   
+            for (int i = 0; i < 100; i++)
             {
-                Output(task, i);
+
+                    Output((int)state, i);
             }
+            
         }
         static void Output(int taskNumber, int iterationNumber)
         {
